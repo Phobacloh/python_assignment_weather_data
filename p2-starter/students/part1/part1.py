@@ -90,8 +90,8 @@ def process_weather(forecast_file):
     """
     import json
 
-    with open("data/forecast_5days_a.json") as json_file:
-        json_data = json.load(json_file)
+    with open("data/forecast_5days_a.json") as forecast_file:
+        forecast_data = json.load(forecast_file)
 
 
 if __name__ == "__main__":
