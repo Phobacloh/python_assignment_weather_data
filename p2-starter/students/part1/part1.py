@@ -1,55 +1,48 @@
 import json
-# from datetime import datetime
+from datetime import datetime
 
-# DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
+DEGREE_SYBMOL = u"\N{DEGREE SIGN}C"
 
 # #_____________________
 
-# def format_temperature(temp):
-#     """Takes a temperature and returns it in string format with the degrees and celcius symbols.
+def format_temperature(temp):
+    """Takes a temperature and returns it in string format with the degrees and celcius symbols.
     
-#     Args:
-#         temp: A string representing a temperature.
-#     Returns:
-#         A string contain the temperature and 'degrees celcius.'
-#     """
-#     return f"{temp}{DEGREE_SYBMOL}"
+    Args:
+        temp: A string representing a temperature.
+    Returns:
+        A string contain the temperature and 'degrees celcius.'
+    """
+    return f"{temp:.1f}{DEGREE_SYBMOL}"
 
 # #_____________________
 
-# def convert_date(iso_string):
-#     """Converts and ISO formatted date into a human readable format.
+def convert_date(iso_string):
+    """Converts and ISO formatted date into a human readable format.
     
-#     Args:
-#         iso_string: An ISO date string..
-#     Returns:
-#         A date formatted like: Weekday Date Month Year
-#     """
-#     d = datetime.strptime(iso_string, "%Y-%m-%dT%H:%M:%S%z")
-#     return d.strftime('%A %d %B %Y')
+    Args:
+        iso_string: An ISO date string..
+    Returns:
+        A date formatted like: Weekday Date Month Year
+    """
+    d = datetime.strptime(iso_string, "%Y-%m-%dT%H:%M:%S%z")
+    return d.strftime('%A %d %B %Y')
 
 
 # #_____________________
 
-# def convert_f_to_c(temp_in_farenheit):
-#     # 32°F − 32) × 5/9 = 0°C
-#     result = (temp_in_farenheit - 32) * 5/9
-#     return(result)
+def convert_f_to_c(temp_in_farenheit):
+    # 32°F − 32) × 5/9 = 0°C
+    result = (temp_in_farenheit - 32) * 5/9
+    return(result)
 
-# temp_in_farenheit = []
-# # ADD STUFF
-# convert_f_to_c(temp_in_farenheit)
-# temp_result = convert_f_to_c(temp_in_farenheit)
-# print(temp_result)
+"""Converts an temperature from farenheit to celcius
 
-
-# """Converts an temperature from farenheit to celcius
-
-# Args:
-#     temp_in_farenheit: integer representing a temperature.
-# Returns:
-#     An integer representing a temperature in degrees celcius.
-# """
+Args:
+    temp_in_farenheit: integer representing a temperature.
+Returns:
+    An integer representing a temperature in degrees celcius.
+"""
 
 
 # #_____________________
@@ -78,14 +71,17 @@ import json
     
 
 # #_____________________
-# with open("data/forecast_5days_a.json") as forecast_file:
-#         forecast_data = json.load(forecast_file)
-#         return(forecast_data)
-
-# forecast_data = process_weather()
-# print(forecast_data["DailyForecasts"][0]["Date"])
 
 def process_weather(forecast_file):
+
+    """Converts raw weather data into meaningful text.
+
+Args:
+    forecast_file: A string representing the file path to a file
+        containing raw weather data.
+Returns:
+    A string containing the processed and formatted weather data.
+"""
 
     with open(forecast_file) as json_file:
         json_data = json.load(json_file)
@@ -94,11 +90,16 @@ def process_weather(forecast_file):
 
 
 data = (process_weather("data/forecast_5days_a.json"))
+if __name__ == "__main__":
+    pass
+    # print(process_weather("data/forecast_5days_a.json"))
+    # print(process_weather("data/forecast_5days_b.json"))
+    # print(process_weather("data/forecast_10days.json"))
+
 
 # for items in process_weather("data/forecast_5days_a.json"):
 #     print (items)
 
- 
 def min_data():
     counter = 0
     min_data_list = []
@@ -109,26 +110,69 @@ def min_data():
         counter = counter + 1
     return min_data_list
 
-
-# for min_temp in data[counter]["Temperature"]["Minimum"]["Value"]:
-#     min_data.append(min_temp)
-min_temp_list = min_data()
-print(min_temp_list)
-
-"""Converts raw weather data into meaningful text.
-
-Args:
-    forecast_file: A string representing the file path to a file
-        containing raw weather data.
-Returns:
-    A string containing the processed and formatted weather data.
-"""
-
-if __name__ == "__main__":
-    pass
-    # print(process_weather("data/forecast_5days_a.json"))
-    # print(process_weather("data/forecast_5days_b.json"))
-    # print(process_weather("data/forecast_10days.json"))
+def max_data():
+    counter = 0
+    max_data_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Temperature"]["Minimum"]["Value"])
+        max_temp = (data[counter]["Temperature"]["Maximum"]["Value"])
+        max_data_list.append(max_temp)
+        counter = counter + 1
+    return max_data_list
 
 
 
+def formatted_min():
+    min_temp_list = min_data()
+    # print(min_temp_list)
+    # print(min(min_temp_list))
+    # convert_f_to_c(min(min_temp_list))
+    temp_result = convert_f_to_c(min(min_temp_list))
+    return(format_temperature(temp_result))
+
+def formatted_max():
+    max_temp_list = max_data()
+    # print(max_temp_list)
+    # print(max(max_temp_list))
+    convert_f_to_c(max(max_temp_list))
+    temp_result = convert_f_to_c(max(max_temp_list))
+    return(format_temperature(temp_result))
+
+def min_date():
+    counter = 0
+    min_date_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Temperature"]["Minimum"]["Value"])
+        min_date = (data[counter]["Date"])
+        min_date_list.append(min_date)
+        counter = counter + 1
+    return min_date_list
+
+# print (convert_date(min_date()[1]))
+
+
+# res = {}
+# for key in min_data():
+#     for value in min_date():
+#         res[key] = value
+#         min_date().remove(value)
+#         break
+
+# print(res)
+# ________CONTENT__________#
+
+print (formatted_min())
+
+print (formatted_max())
+
+def formatted_loop():
+    counter = 0
+    while counter < (len(data)):
+        print(f"-------- {(convert_date(min_date()[counter]))}--------")
+        print(f"Minimum Temperature:{format_temperature(convert_f_to_c(min_data()[counter]))}")
+        print(f"Maximum Temperature:{format_temperature(convert_f_to_c(max_data()[counter]))}")
+        counter = counter + 1
+        print()
+    # return min_date_list
+
+print(formatted_loop())
