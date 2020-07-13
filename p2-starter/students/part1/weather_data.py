@@ -7,7 +7,7 @@ with open("data/forecast_5days_a.json") as json_file:
 
 print()
 print()
-print(type(json_data["Headline"]))
+print(json_data["Headline"])
 #tell me what type this is (dict, list ext)
 
 # for p_id,p_info in json_data.items():
