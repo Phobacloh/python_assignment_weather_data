@@ -186,36 +186,27 @@ def min_date():
         counter = counter + 1
     return min_date_list
 
-# print (convert_date(min_date()[1]))
-
-
-# res = {}
-# for key in min_data():
-#     for value in min_date():
-#         res[key] = value
-#         min_date().remove(value)
-#         break
-
-# print(res)
-
-# test_keys = ["Rash", "Kil", "Varsha"] 
-# test_values = [1, 4, 5] 
+def converted_date_loop():
+    counter = 0
+    converted_dates_list = []
+    while counter < (len(data)):
+        # print (convert_date(min_date()[counter]))
+        converted_date = (convert_date(min_date()[counter]))
+        converted_dates_list.append(converted_date)
+        counter = counter + 1
+    return converted_dates_list
+    
   
-# Printing original keys-value lists 
-print ("Original key list is : " + str(min_data())) 
-print ("Original value list is : " + str(convert_date(min_date())))
-  
-# using naive method 
 # to convert lists to dictionary 
-res = {} 
+min_data_dictionary = {} 
 for key in min_data(): 
-    for value in min_date(): 
-        res[key] = value 
-        min_date().remove(value) 
+    for value in converted_date_loop(): 
+        min_data_dictionary[key] = value 
+        converted_date_loop().remove(value) 
         break  
   
 # Printing resultant dictionary  
-print ("Resultant dictionary is : " +  str(res)) 
+print (str(min_data_dictionary)) 
 
 
 # ________CONTENT__________#
