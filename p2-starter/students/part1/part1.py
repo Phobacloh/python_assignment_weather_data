@@ -199,22 +199,18 @@ def min_date():
 # print(res)
 # ________CONTENT__________#
 
-print (formatted_min())
-
-print (formatted_max())
-
-def formatted_loop():
-    counter = 0
-    while counter < (len(data)):
-        print(f"-------- {(convert_date(min_date()[counter]))} --------")
-        print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
-        print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
-        print(f"Daytime: {day_data()[counter]}")
-        print(f"    Chance of rain: {day_rain_probability()[counter]}%")
-        print(f"Nighttime: {night_data()[counter]}")
-        print(f"    Chance of rain: {night_rain_probability()[counter]}%")
-        counter = counter + 1
-        print()
+# def formatted_loop():
+counter = 0
+while counter < (len(data)):
+    print(f"-------- {(convert_date(min_date()[counter]))} --------")
+    print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
+    print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
+    print(f"Daytime: {day_data()[counter]}")
+    print(f"    Chance of rain: {day_rain_probability()[counter]}%")
+    print(f"Nighttime: {night_data()[counter]}")
+    print(f"    Chance of rain: {night_rain_probability()[counter]}%")
+    counter = counter + 1
+    print()
     # return min_date_list
 
-print(formatted_loop())
+# print(formatted_loop())
