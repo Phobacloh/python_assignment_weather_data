@@ -197,9 +197,35 @@ def min_date():
 #         break
 
 # print(res)
+
+# test_keys = ["Rash", "Kil", "Varsha"] 
+# test_values = [1, 4, 5] 
+  
+# Printing original keys-value lists 
+print ("Original key list is : " + str(min_data())) 
+print ("Original value list is : " + str(convert_date(min_date())))
+  
+# using naive method 
+# to convert lists to dictionary 
+res = {} 
+for key in min_data(): 
+    for value in min_date(): 
+        res[key] = value 
+        min_date().remove(value) 
+        break  
+  
+# Printing resultant dictionary  
+print ("Resultant dictionary is : " +  str(res)) 
+
+
 # ________CONTENT__________#
 
 # def formatted_loop():
+print(f"5 Day Overview")
+print(f"    The lowest Temperature will be {formatted_min()}, and will occur on")
+print()
+
+
 counter = 0
 while counter < (len(data)):
     print(f"-------- {(convert_date(min_date()[counter]))} --------")
