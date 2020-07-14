@@ -120,7 +120,45 @@ def max_data():
         counter = counter + 1
     return max_data_list
 
+def day_data():
+    counter = 0
+    day_phrase_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Day"]["LongPhrase"])
+        day_phrase = (data[counter]["Day"]["LongPhrase"])
+        day_phrase_list.append(day_phrase)
+        counter = counter + 1
+    return day_phrase_list
 
+def day_rain_probability():
+    counter = 0
+    rain_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Day"]["LongPhrase"])
+        rain_chance = (data[counter]["Day"]["RainProbability"])
+        rain_list.append(rain_chance)
+        counter = counter + 1
+    return rain_list
+
+def night_data():
+    counter = 0
+    night_phrase_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Day"]["LongPhrase"])
+        night_phrase = (data[counter]["Night"]["LongPhrase"])
+        night_phrase_list.append(night_phrase)
+        counter = counter + 1
+    return night_phrase_list
+
+def night_rain_probability():
+    counter = 0
+    rain_list = []
+    while counter < (len(data)):
+        # print(data[counter]["Day"]["LongPhrase"])
+        rain_chance = (data[counter]["Night"]["RainProbability"])
+        rain_list.append(rain_chance)
+        counter = counter + 1
+    return rain_list
 
 def formatted_min():
     min_temp_list = min_data()
@@ -168,9 +206,13 @@ print (formatted_max())
 def formatted_loop():
     counter = 0
     while counter < (len(data)):
-        print(f"-------- {(convert_date(min_date()[counter]))}--------")
-        print(f"Minimum Temperature:{format_temperature(convert_f_to_c(min_data()[counter]))}")
-        print(f"Maximum Temperature:{format_temperature(convert_f_to_c(max_data()[counter]))}")
+        print(f"-------- {(convert_date(min_date()[counter]))} --------")
+        print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
+        print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
+        print(f"Daytime: {day_data()[counter]}")
+        print(f"    Chance of rain: {day_rain_probability()[counter]}%")
+        print(f"Nighttime: {night_data()[counter]}")
+        print(f"    Chance of rain: {night_rain_probability()[counter]}%")
         counter = counter + 1
         print()
     # return min_date_list
