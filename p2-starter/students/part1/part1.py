@@ -195,39 +195,29 @@ def converted_date_loop():
         converted_dates_list.append(converted_date)
         counter = counter + 1
     return converted_dates_list
-    
   
 # to convert lists to dictionary 
-min_data_dictionary = {} 
-for key in min_data(): 
-    for value in converted_date_loop(): 
-        min_data_dictionary[key] = value 
-        converted_date_loop().remove(value) 
-        break  
-  
-# Printing resultant dictionary  
-print (str(min_data_dictionary)) 
-
+min_data_dictionary= dict(zip(min_data(), converted_date_loop()))
 
 # ________CONTENT__________#
 
 # def formatted_loop():
 print(f"5 Day Overview")
-print(f"    The lowest Temperature will be {formatted_min()}, and will occur on")
-print()
+print(f"    The lowest Temperature will be {formatted_min()}, and will occur on {min_data_dictionary[min(min_data())]}")
 
 
-counter = 0
-while counter < (len(data)):
-    print(f"-------- {(convert_date(min_date()[counter]))} --------")
-    print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
-    print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
-    print(f"Daytime: {day_data()[counter]}")
-    print(f"    Chance of rain: {day_rain_probability()[counter]}%")
-    print(f"Nighttime: {night_data()[counter]}")
-    print(f"    Chance of rain: {night_rain_probability()[counter]}%")
-    counter = counter + 1
-    print()
+
+# counter = 0
+# while counter < (len(data)):
+#     print(f"-------- {(convert_date(min_date()[counter]))} --------")
+#     print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
+#     print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
+#     print(f"Daytime: {day_data()[counter]}")
+#     print(f"    Chance of rain: {day_rain_probability()[counter]}%")
+#     print(f"Nighttime: {night_data()[counter]}")
+#     print(f"    Chance of rain: {night_rain_probability()[counter]}%")
+#     counter = counter + 1
+#     print()
     # return min_date_list
 
 # print(formatted_loop())
