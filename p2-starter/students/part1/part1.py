@@ -45,29 +45,20 @@ Returns:
 """
 
 
-# #_____________________
-# number_list = []
-# # Add STUFF
-# def calculate_mean(total, num_items):
-#     mean = total/num_items
-#     return(mean)
+#_____________________
+def calculate_mean(total, num_items):
+    mean = total/num_items
+    return(mean)
 
-# total = sum(number_list)
 
-# num_items = len(number_list)
+"""Calculates the mean.
 
-# calculate_mean(total,num_items)
-# mean = calculate_mean(total,num_items)
-# print(int(mean))
-
-# """Calculates the mean.
-
-# Args:
-#     total: integer representing the sum of the numbers.
-#     num_items: integer representing the number of items counted.
-# Returns:
-#     An integer representing the mean of the numbers.
-# """
+Args:
+    total: integer representing the sum of the numbers.
+    num_items: integer representing the number of items counted.
+Returns:
+    An integer representing the mean of the numbers.
+"""
     
 
 # #_____________________
@@ -199,25 +190,41 @@ def converted_date_loop():
 # to convert lists to dictionary 
 min_data_dictionary= dict(zip(min_data(), converted_date_loop()))
 
+max_data_dictionary= dict(zip(max_data(), converted_date_loop()))
+
+def min_mean():
+    total = sum(min_data())
+    num_items = len(data)
+    return(calculate_mean(total,num_items))
+
+def max_mean():
+    total = sum(max_data())
+    num_items = len(data)
+    return(calculate_mean(total,num_items))
+
+# calculate_mean(total,num_items)
+# mean = calculate_mean(total,num_items)
+
 # ________CONTENT__________#
 
 # def formatted_loop():
 print(f"5 Day Overview")
-print(f"    The lowest Temperature will be {formatted_min()}, and will occur on {min_data_dictionary[min(min_data())]}")
+print(f"    The lowest temperature will be {formatted_min()}, and will occur on {min_data_dictionary[min(min_data())]}")
+print(f"    The highest temperature will be {formatted_max()}, and will occur on {max_data_dictionary[max(max_data())]}")
+print(f"    The average low this week is {format_temperature(convert_f_to_c(min_mean()))}")
+print(f"    The average high this week is {format_temperature(convert_f_to_c(max_mean()))}")
 
-
-
-# counter = 0
-# while counter < (len(data)):
-#     print(f"-------- {(convert_date(min_date()[counter]))} --------")
-#     print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
-#     print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
-#     print(f"Daytime: {day_data()[counter]}")
-#     print(f"    Chance of rain: {day_rain_probability()[counter]}%")
-#     print(f"Nighttime: {night_data()[counter]}")
-#     print(f"    Chance of rain: {night_rain_probability()[counter]}%")
-#     counter = counter + 1
-#     print()
+counter = 0
+while counter < (len(data)):
+    print(f"-------- {(convert_date(min_date()[counter]))} --------")
+    print(f"Minimum Temperature: {format_temperature(convert_f_to_c(min_data()[counter]))}")
+    print(f"Maximum Temperature: {format_temperature(convert_f_to_c(max_data()[counter]))}")
+    print(f"Daytime: {day_data()[counter]}")
+    print(f"    Chance of rain: {day_rain_probability()[counter]}%")
+    print(f"Nighttime: {night_data()[counter]}")
+    print(f"    Chance of rain: {night_rain_probability()[counter]}%")
+    counter = counter + 1
+    print()
     # return min_date_list
 
 # print(formatted_loop())
