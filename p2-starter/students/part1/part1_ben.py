@@ -168,7 +168,7 @@ def all_data(data):
 def convert_f_to_c(temp_in_farenheit):
     # 32°F − 32) × 5/9 = 0°C
     result = (temp_in_farenheit - 32) * 5/9
-    return round(result,1)
+    return(result)
 
 """Converts an temperature from farenheit to celcius
 
@@ -182,7 +182,7 @@ Returns:
 #_____________________
 def calculate_mean(total, num_items):
     mean = total/num_items
-    return round(mean,1)
+    return(mean)
 
 
 """Calculates the mean.
@@ -212,32 +212,32 @@ Returns:
     # for items in json_data["DailyForecasts"][0]["Date"]:
     data = json_data["DailyForecasts"]
 
-    # min_data_dictionary= dict(zip(min_data(data), converted_date_loop(data)))
-    # max_data_dictionary= dict(zip(max_data(data), converted_date_loop(data)))
+    min_data_dictionary= dict(zip(min_data(data), converted_date_loop(data)))
+    max_data_dictionary= dict(zip(max_data(data), converted_date_loop(data)))
 
     date_list = converted_date_loop(data)
+    print(date_list)
     min_list = min_data(data)
     min_list = [convert_f_to_c(item) for item in min_list]
+    print(min_list)
     min_value = min(min_list)
+    print(min_value)
     min_index = min_list.index(min_value)
+    print(min_index)
     min_date = date_list[min_index]
-    
-    date_list = converted_date_loop(data)
-    max_list = max_data(data)
-    max_list = [convert_f_to_c(item) for item in max_list]
-    max_value = max(max_list)
-    max_index = max_list.index(max_value)
-    max_date = date_list[max_index]
+    print(min_date)
 
-    
     # process weather - build up the output string
-    output_string = f"{len(min_list)} Day Overview\n    The lowest temperature will be {format_temperature(min_value)}, and will occur on {min_date}.\n    The highest temperature will be {format_temperature(max_value)}, and will occur on {max_date}.\n    The average low this week is {format_temperature(convert_f_to_c(min_mean(data)))}.\n    The average high this week is {format_temperature(convert_f_to_c(max_mean(data)))}.\n\n{all_data(data)}"
+    output_string = f"5 Day Overview\n    The lowest temperature will be {formatted_min(data)}, and will occur on {min_data_dictionary[min(min_data(data))]}.\n    The highest temperature will be {formatted_max(data)}, and will occur on {max_data_dictionary[max(max_data(data))]}.\n    The average low this week is {format_temperature(convert_f_to_c(min_mean(data)))}.\n    The average high this week is {format_temperature(convert_f_to_c(max_mean(data)))}.\n\n{all_data(data)}"
 
     output_string+="\n"
     return(output_string)
 
 if __name__ == "__main__":
     pass
-    print(process_weather("data/forecast_5days_a.json"))
+    # print(process_weather("data/forecast_5days_a.json"))
     # print(process_weather("data/forecast_5days_b.json"))
     # print(process_weather("data/forecast_10days.json"))
+    process_weather("data/forecast_5days_a.json")
+    process_weather("data/forecast_5days_b.json")
+    process_weather("data/forecast_10days.json")
