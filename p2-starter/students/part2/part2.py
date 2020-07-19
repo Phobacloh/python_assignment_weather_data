@@ -25,7 +25,7 @@ def process_weather(forecast_file):
     data = json_data["DailyForecasts"]
     return data
 
-data = process_weather("data/forecast_5days_a.json")
+data = process_weather("data/forecast_5days_b.json")
 
 def min_data(data):
     counter = 0
@@ -37,7 +37,6 @@ def min_data(data):
     return min_data_list
 
 min_list = (min_data(data))
-print(min_list)
 
 def max_data(data):
     counter = 0
@@ -49,7 +48,6 @@ def max_data(data):
     return max_data_list
 
 max_list = max_data(data)
-print(max_list)
 
 def date(data):
     counter = 0
@@ -61,29 +59,26 @@ def date(data):
     return date_list
 
 dates = date(data)
-print(dates)
 
 # Line graph
 
 df = {
-    "min_temp": min_list,
-    "max_temp": max_list,
-    "dates": dates
+    "Min Temp": min_list,
+    "Max Temp": max_list,
+    "Date": dates
 }
-fig = px.line(df, y=["min_temp","max_temp"], x="dates")
-fig.show()
-
-# fig = px.line(x="Date", y="Temp", title="Temperatures Bro",template="plotly_dark")
+fig = px.line(df, y=["Min Temp","Max Temp"], x="Date", title=f"Temperatures over {len(min_list)} day period",template="plotly_dark")
 # fig.update_layout(plot_bgcolor= "white")
 # fig.update_xaxes(gridcolor='LightGrey')
 # fig.update_yaxes(showgrid=True, gridwidth=0.5, gridcolor='LightGrey')
-# fig.update_traces(line = dict(color='royalblue', width=3, dash='dash'), 
-#     mode='lines+markers',
-#     marker=dict(
-#             color='LightSkyBlue',
-#             size=10,
-#             line=dict(
-#                 color='royalblue',
-#                 width=2
-#             )
-# ))
+fig.update_traces(line = dict(width=3, dash='solid'), 
+    mode='lines+markers',
+    marker=dict(
+            color='purple',
+            size=10,
+            line=dict(
+                color='lightcoral',
+                width=2
+            )
+))
+fig.show()
